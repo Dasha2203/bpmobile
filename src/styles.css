@@ -1,0 +1,18 @@
+@import './styles/link-btn.css';
+@import './styles/banner.css';
+@import './styles/badge.css';
+@import './styles/offer.css';
+@import './styles/benefit.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: black;
+}
+

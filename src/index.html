@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    name="theme-color"
+    content="#000000"
+  />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="banner">
+    <a
+      href="#"
+      aria-label="Close"
+      class="banner__close-btn"
+    >
+      <svg
+        class="social-icon"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+      >
+        <use href="assets/img/sprite.svg#cross"></use>
+      </svg>
+    </a>
+    <h1
+      id="banner__title"
+      class="banner__title"
+      data-i18n="Get Unlimited <br>Access"
+    >
+      Get Unlimited Access
+    </h1>
+
+    <section class="banner__benefits">
+      <div class="benefit">
+        <div class="benefit__content">
+          <picture>
+            <source
+              srcset="assets/img/benefit-unlimit-art.webp 1x, assets/img/benefit-unlimit-art@2x.webp 2x, assets/img/benefit-unlimit-art@3x.webp 3x"
+              type="image/webp"
+            >
+            <source
+              srcset="assets/img/benefit-unlimit-art.png 1x, assets/img/benefit-unlimit-art@2x.png 2x, assets/img/benefit-unlimit-art@3x.png 3x"
+              type="image/png"
+            >
+            <img
+              src="assets/img/benefit-unlimit-art.png"
+              srcset="assets/img/benefit-unlimit-art.png 1x, assets/img/benefit-unlimit-art@2x.png 2x, assets/img/benefit-unlimit-art@3x.png 3x"
+              class="benefit__img"
+              alt="Unlimit arts"
+            />
+          </picture>
+          <div
+            class="benefit__title"
+            data-i18n="Unlimited Art <br>Creation"
+          >Unlimited Art Creation</div>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit__content">
+          <picture>
+            <source
+              srcset="assets/img/benefit-exclusive-style.webp 1x, assets/img/benefit-exclusive-style@2x.webp 2x, assets/img/benefit-exclusive-style@3x.webp 3x"
+              type="image/webp"
+            />
+            <source
+              srcset="assets/img/benefit-exclusive-style.png 1x, assets/img/benefit-exclusive-style@2x.png 2x, assets/img/benefit-exclusive-style@3x.png 3x"
+              type="image/png"
+            />
+            <img
+              src="assets/img/benefit-exclusive-style.png"
+              srcset="assets/img/benefit-exclusive-style.png 1x, assets/img/benefit-exclusive-style@2x.png 2x, assets/img/benefit-exclusive-style@3x.png 3x"
+              class="benefit__img"
+              alt="Exclusive style"
+            />
+          </picture>
+          <div
+            class="benefit__title"
+            data-i18n="Exclusive <br>Styles"
+          >
+            Exclusive Styles
+          </div>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit__content">
+          <picture>
+            <source
+              srcset="assets/img/benefit-avatars.webp 1x, assets/img/benefit-avatars@2x.webp 2x, assets/img/benefit-avatars@3x.webp 3x"
+              type="image/webp"
+            />
+            <source
+              srcset="assets/img/benefit-avatars.png 1x, assets/img/benefit-avatars@2x.png 2x, assets/img/benefit-avatars@3x.png 3x"
+              type="image/png"
+            />
+            <img
+              srcset="assets/img/benefit-avatars.png 1x, assets/img/benefit-avatars@2x.png 2x, assets/img/benefit-avatars@3x.png 3x"
+              class="benefit__img"
+              alt="Magic avatars"
+            />
+          </picture>
+          <div
+            class="benefit__title"
+            data-i18n="Magic Avatars <br>With 20% Off"
+          >Magic Avatars With 20% Off</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="banner__offers">
+
+      <button id="offer-yearly" data-href="https://apple.com/" class="offer offer_active">
+        <div
+          class="badge"
+          data-i18n="BEST OFFER"
+        >
+          best offer
+        </div>
+        <div class="offer__name">
+          <p data-i18n="YEARLY ACCESS">
+            YEARLY ACCESS
+          </p>
+          <span
+            data-i18n="Just {{price}} per year"
+            data-i18n-var-price="$39.99"
+          >
+            Just {{price}} per year
+          </span>
+        </div>
+        <div
+          class="offer__price"
+          data-i18n="{{price}} <br>per week"
+          data-i18n-var-price="$0.48"
+        >
+          $0.48 <br>per week
+        </div>
+      </button>
+
+      <button id="offer-monthly" data-href="https://google.com/" class="offer">
+        <div
+          class="offer__name"
+          data-i18n="WEEKLY ACCESS"
+        >
+          WEEKLY ACCESS
+        </div>
+        <div
+          class="offer__price"
+          data-i18n="{{price}} <br>per week"
+          data-i18n-var-price="$6.99"
+        >
+          $6.99 <br>per week
+        </div>
+      </button>
+      <a
+        id="offer-submit"
+        href="#"
+        class="link-btn"
+        data-i18n="Continue"
+      >
+        Continue
+      </a>
+    </div>
+    <footer class="banner__footer">
+      <a
+        href="#"
+        class="banner__footer-link"
+        data-i18n="Terms of Use"
+      >
+        Terms of Use
+      </a>
+      <a
+        href="#"
+        class="banner__footer-link"
+        data-i18n="Privacy Policy"
+      >
+        Privacy Policy
+      </a>
+      <a
+        href="#"
+        class="banner__footer-link"
+        data-i18n="Restore"
+      >
+        Restore
+      </a>
+    </footer>
+  </div>
+</body>
+
+</html>
