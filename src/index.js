@@ -6,7 +6,7 @@ import './locales/es.json'
 import './locales/fr.json'
 import './locales/ja.json'
 import './locales/pt.json'
-import { loadTranslations, t } from './scripts/translations'
+import { loadTranslations, t } from './assets/scripts/translations'
 
 const LOCALES_CODE = ['de', 'en', 'es', 'fr', 'ja', 'pt']
 
@@ -46,7 +46,7 @@ offers.forEach(offer => {
     })
 
     offer.classList.add('offer_active')
-    
+
     let href = offer.getAttribute('data-href')
     offerSbmBtn.setAttribute('href', href)
   })

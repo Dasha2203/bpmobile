@@ -1,8 +1,8 @@
-@import './styles/link-btn.css';
-@import './styles/banner.css';
-@import './styles/badge.css';
-@import './styles/offer.css';
-@import './styles/benefit.css';
+@import './assets/styles/link-btn.css';
+@import './assets/styles/banner.css';
+@import './assets/styles/badge.css';
+@import './assets/styles/offer.css';
+@import './assets/styles/benefit.css';
 
 * {
   margin: 0;
