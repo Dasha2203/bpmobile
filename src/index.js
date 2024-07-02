@@ -11,7 +11,9 @@ import { loadTranslations, t } from './assets/scripts/translations'
 const LOCALES_CODE = ['de', 'en', 'es', 'fr', 'ja', 'pt']
 
 const urlParams = new URLSearchParams(window.location.search)
-let currentLanguage = LOCALES_CODE.includes(urlParams.get('lang')) ? urlParams.get('lang') : 'en'
+const navigatorLocale = navigator.language.split('-')[0]
+const systemLang = LOCALES_CODE.includes(navigatorLocale) ? navigatorLocale : 'en'
+let currentLanguage = LOCALES_CODE.includes(urlParams.get('lang')) ? urlParams.get('lang') : systemLang
 
 function updateText() {
   document.querySelectorAll('[data-i18n]').forEach(element => {
