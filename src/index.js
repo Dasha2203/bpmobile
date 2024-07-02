@@ -7,6 +7,10 @@ import './locales/fr.json'
 import './locales/ja.json'
 import './locales/pt.json'
 import { loadTranslations, t } from './assets/scripts/translations'
+import { changeSizeText } from './assets/scripts/changeSizeText'
+
+const offers = document.querySelectorAll('.offer')
+const offerSbmBtn = document.querySelector('#offer-submit')
 
 const LOCALES_CODE = ['de', 'en', 'es', 'fr', 'ja', 'pt']
 
@@ -14,6 +18,34 @@ const urlParams = new URLSearchParams(window.location.search)
 const navigatorLocale = navigator.language.split('-')[0]
 const systemLang = LOCALES_CODE.includes(navigatorLocale) ? navigatorLocale : 'en'
 let currentLanguage = LOCALES_CODE.includes(urlParams.get('lang')) ? urlParams.get('lang') : systemLang
+
+loadTranslations(currentLanguage).then(() => {
+  updateText()
+})
+
+offers.forEach(offer => {
+
+  offer.addEventListener('click', () => {
+    offers.forEach(offer => {
+      offer.classList.remove('offer_active')
+    })
+
+    offer.classList.add('offer_active')
+
+    let href = offer.getAttribute('data-href')
+    offerSbmBtn.setAttribute('href', href)
+  })
+})
+
+window.onload = changeSizeFooterLinks
+window.addEventListener('resize', changeSizeFooterLinks)
+
+function changeSizeFooterLinks() {
+  const bannerFooterBlockLink = document.querySelector('.banner__footer')
+  const elements = document.querySelectorAll('.banner__footer-link') || []
+
+  changeSizeText(bannerFooterBlockLink, elements)
+}
 
 function updateText() {
   document.querySelectorAll('[data-i18n]').forEach(element => {
@@ -32,24 +64,3 @@ function updateText() {
     element.innerHTML = t(key, props);
   });
 }
-
-loadTranslations(currentLanguage).then(() => {
-  updateText()
-})
-
-const offers = document.querySelectorAll('.offer')
-const offerSbmBtn = document.querySelector('#offer-submit')
-
-offers.forEach(offer => {
-
-  offer.addEventListener('click', () => {
-    offers.forEach(offer => {
-      offer.classList.remove('offer_active')
-    })
-
-    offer.classList.add('offer_active')
-
-    let href = offer.getAttribute('data-href')
-    offerSbmBtn.setAttribute('href', href)
-  })
-})

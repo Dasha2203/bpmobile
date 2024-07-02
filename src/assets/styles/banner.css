@@ -34,12 +34,8 @@
   justify-content: center;
 }
 
-.banner__footer-link {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; 
+.banner__footer-link { 
   color: rgba(255, 255, 255, .5);
-  word-break: break-all;
   text-align: center;
 }
 

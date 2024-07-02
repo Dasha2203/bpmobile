@@ -811,6 +811,36 @@ try {
 
 /***/ }),
 
+/***/ "./src/assets/scripts/changeSizeText.js":
+/*!**********************************************!*\
+  !*** ./src/assets/scripts/changeSizeText.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   changeSizeText: () => (/* binding */ changeSizeText)
+/* harmony export */ });
+function changeSizeText(container, elements) {
+  let fullWidth = getFullWidth(container, elements);
+  let fontSize = parseFloat(window.getComputedStyle(elements[0]).fontSize);
+  while (fullWidth > container.clientWidth && fontSize > 0) {
+    fontSize -= 1;
+    Array.from(elements).forEach(el => {
+      el.style.fontSize = fontSize + 'px';
+    });
+    fullWidth = getFullWidth(container, elements);
+  }
+}
+function getFullWidth(container, elements) {
+  const fullColsWidth = Array.from(elements).reduce((acc, item) => item.clientWidth + acc, 0);
+  const colsGapWidth = parseFloat(getComputedStyle(container).columnGap);
+  return fullColsWidth + colsGapWidth * (elements.length - 1);
+}
+
+/***/ }),
+
 /***/ "./src/assets/scripts/translations.js":
 /*!********************************************!*\
   !*** ./src/assets/scripts/translations.js ***!
@@ -10065,12 +10095,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.banner {
   justify-content: center;
 }
 
-.banner__footer-link {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; 
+.banner__footer-link { 
   color: rgba(255, 255, 255, .5);
-  word-break: break-all;
   text-align: center;
 }
 
@@ -10166,7 +10192,7 @@ only screen and (min-resolution: 2dppx) and (min-width: 320px) and (max-width: 7
   .banner__footer-link {
     font-size: 3.34vw;
   }
-}`, "",{"version":3,"sources":["webpack://./src/assets/styles/banner.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,cAAc;EACd,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,mBAAmB;EACnB,iBAAiB;EACjB,cAAc;EACd,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,MAAM;EACN,SAAS;EACT,aAAa;AACf;;AAEA;EACE,aAAa;EACb,qCAAqC;AACvC;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,uBAAuB;AACzB;;AAEA;EACE,oBAAoB;EACpB,qBAAqB;EACrB,4BAA4B;EAC5B,8BAA8B;EAC9B,qBAAqB;EACrB,kBAAkB;AACpB;;AAEA,UAAU;AACV;;;;;;EAME;IACE,yDAAyC;IACzC,sBAAsB;IACtB,2BAA2B;EAC7B;AACF;;AAEA;;;EAGE;IACE,yDAA6C;IAC7C,sBAAsB;IACtB,2BAA2B;EAC7B;AACF;;AAEA,iBAAiB;AACjB;EACE;IACE,kBAAkB;EACpB;;EAEA;IACE,iBAAiB;EACnB;;EAEA;IACE,kBAAkB;IAClB,YAAY;EACd;;EAEA;IACE,mBAAmB;IACnB,qBAAqB;IACrB,WAAW;EACb;;EAEA;IACE,mBAAmB;IACnB,QAAQ;EACV;;EAEA;IACE,iBAAiB;EACnB;AACF;;AAEA,iBAAiB;AACjB;EACE;IACE,kBAAkB;EACpB;;EAEA;IACE,iBAAiB;EACnB;;EAEA;IACE,SAAS;EACX;;EAEA;IACE,mBAAmB;IACnB,YAAY;EACd;;EAEA;IACE,mBAAmB;IACnB,sBAAsB;IACtB,WAAW;EACb;;EAEA;IACE,kBAAkB;EACpB;;EAEA;IACE,mBAAmB;IACnB,QAAQ;EACV;;EAEA;IACE,iBAAiB;EACnB;AACF","sourcesContent":[".banner {\n  position: relative;\n  height: 100svh;\n  display: flex;\n  flex-direction: column;\n}\n\n.banner__title {\n  margin: auto auto 0;\n  letter-spacing: 0;\n  color: #FFFFFF;\n  text-align: center;\n}\n\n.banner__close-btn {\n  position: absolute;\n  top: 0;\n  left: 8px;\n  padding: 16px;\n}\n\n.banner__benefits {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n}\n\n.banner__offers {\n  display: flex;\n  flex-direction: column;\n}\n\n.banner__footer {\n  display: flex;\n  justify-content: center;\n}\n\n.banner__footer-link {\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical; \n  color: rgba(255, 255, 255, .5);\n  word-break: break-all;\n  text-align: center;\n}\n\n/* 8+/se */\n@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 320px) and (max-width: 736px),\nonly screen and (min--moz-device-pixel-ratio: 2) and (min-width: 320px) and (max-width: 736px),\nonly screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 320px) and (max-width: 736px),\nonly screen and (min-device-pixel-ratio: 2) and (min-width: 320px) and (max-width: 736px),\nonly screen and (min-resolution: 192dpi) and (min-width: 320px) and (max-width: 736px),\nonly screen and (min-resolution: 2dppx) and (min-width: 320px) and (max-width: 736px) {\n  .banner {\n    background-image: url(\"../img/bg@2x.png\");\n    background-size: cover;\n    background-position: center;\n  }\n}\n\n@media only screen \n  and (max-width: 430px) and (max-height: 932px) \n  and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi) {\n  .banner {\n    background-image: url(\"../img/big-bg@3x.png\");\n    background-size: cover;\n    background-position: center;\n  }\n}\n\n/* iphone 8+/se */\n@media only screen and (min-width: 320px) and (min-height: 667px) {\n  .banner {\n    padding: 0 6.4vw 0;\n  }\n\n  .banner__title {\n    font-size: 11.2vw;\n  }\n\n  .banner__benefits {\n    margin-top: 10.6vw;\n    gap: 1.866vw;\n  }\n\n  .banner__offers {\n    margin-top: 10.77vw;\n    margin-bottom: 7.46vw;\n    gap: 2.13vw;\n  }\n\n  .banner__footer {\n    padding: 0 0 2.81vw;\n    gap: 8vw;\n  }\n\n  .banner__footer-link {\n    font-size: 3.34vw;\n  }\n}\n\n/* new iphones  */\n@media only screen and (min-width: 375px) and (min-height: 812px) {\n  .banner {\n    padding: 0 6.4vw 0;\n  }\n\n  .banner__title {\n    font-size: 10.8vw;\n  }\n\n  .banner__close-btn {\n    top: 13px;\n  }\n\n  .banner__benefits {\n    margin-top: 10.43vw;\n    gap: 3.589vw;\n  }\n\n  .banner__offers {\n    margin-top: 12.74vw;\n    margin-bottom: 11.28vw;\n    gap: 2.05vw;\n  }\n\n  .banner__offers .link-btn {\n    margin-top: 2.05vw;\n  }\n\n  .banner__footer {\n    padding: 0 0 2.81vw;\n    gap: 8vw;\n  }\n\n  .banner__footer-link {\n    font-size: 3.34vw;\n  }\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/assets/styles/banner.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,cAAc;EACd,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,mBAAmB;EACnB,iBAAiB;EACjB,cAAc;EACd,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,MAAM;EACN,SAAS;EACT,aAAa;AACf;;AAEA;EACE,aAAa;EACb,qCAAqC;AACvC;;AAEA;EACE,aAAa;EACb,sBAAsB;AACxB;;AAEA;EACE,aAAa;EACb,uBAAuB;AACzB;;AAEA;EACE,8BAA8B;EAC9B,kBAAkB;AACpB;;AAEA,UAAU;AACV;;;;;;EAME;IACE,yDAAyC;IACzC,sBAAsB;IACtB,2BAA2B;EAC7B;AACF;;AAEA;;;EAGE;IACE,yDAA6C;IAC7C,sBAAsB;IACtB,2BAA2B;EAC7B;AACF;;AAEA,iBAAiB;AACjB;EACE;IACE,kBAAkB;EACpB;;EAEA;IACE,iBAAiB;EACnB;;EAEA;IACE,kBAAkB;IAClB,YAAY;EACd;;EAEA;IACE,mBAAmB;IACnB,qBAAqB;IACrB,WAAW;EACb;;EAEA;IACE,mBAAmB;IACnB,QAAQ;EACV;;EAEA;IACE,iBAAiB;EACnB;AACF;;AAEA,iBAAiB;AACjB;EACE;IACE,kBAAkB;EACpB;;EAEA;IACE,iBAAiB;EACnB;;EAEA;IACE,SAAS;EACX;;EAEA;IACE,mBAAmB;IACnB,YAAY;EACd;;EAEA;IACE,mBAAmB;IACnB,sBAAsB;IACtB,WAAW;EACb;;EAEA;IACE,kBAAkB;EACpB;;EAEA;IACE,mBAAmB;IACnB,QAAQ;EACV;;EAEA;IACE,iBAAiB;EACnB;AACF","sourcesContent":[".banner {\n  position: relative;\n  height: 100svh;\n  display: flex;\n  flex-direction: column;\n}\n\n.banner__title {\n  margin: auto auto 0;\n  letter-spacing: 0;\n  color: #FFFFFF;\n  text-align: center;\n}\n\n.banner__close-btn {\n  position: absolute;\n  top: 0;\n  left: 8px;\n  padding: 16px;\n}\n\n.banner__benefits {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n}\n\n.banner__offers {\n  display: flex;\n  flex-direction: column;\n}\n\n.banner__footer {\n  display: flex;\n  justify-content: center;\n}\n\n.banner__footer-link { \n  color: rgba(255, 255, 255, .5);\n  text-align: center;\n}\n\n/* 8+/se */\n@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 320px) and (max-width: 736px),\nonly screen and (min--moz-device-pixel-ratio: 2) and (min-width: 320px) and (max-width: 736px),\nonly screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 320px) and (max-width: 736px),\nonly screen and (min-device-pixel-ratio: 2) and (min-width: 320px) and (max-width: 736px),\nonly screen and (min-resolution: 192dpi) and (min-width: 320px) and (max-width: 736px),\nonly screen and (min-resolution: 2dppx) and (min-width: 320px) and (max-width: 736px) {\n  .banner {\n    background-image: url(\"../img/bg@2x.png\");\n    background-size: cover;\n    background-position: center;\n  }\n}\n\n@media only screen \n  and (max-width: 430px) and (max-height: 932px) \n  and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi) {\n  .banner {\n    background-image: url(\"../img/big-bg@3x.png\");\n    background-size: cover;\n    background-position: center;\n  }\n}\n\n/* iphone 8+/se */\n@media only screen and (min-width: 320px) and (min-height: 667px) {\n  .banner {\n    padding: 0 6.4vw 0;\n  }\n\n  .banner__title {\n    font-size: 11.2vw;\n  }\n\n  .banner__benefits {\n    margin-top: 10.6vw;\n    gap: 1.866vw;\n  }\n\n  .banner__offers {\n    margin-top: 10.77vw;\n    margin-bottom: 7.46vw;\n    gap: 2.13vw;\n  }\n\n  .banner__footer {\n    padding: 0 0 2.81vw;\n    gap: 8vw;\n  }\n\n  .banner__footer-link {\n    font-size: 3.34vw;\n  }\n}\n\n/* new iphones  */\n@media only screen and (min-width: 375px) and (min-height: 812px) {\n  .banner {\n    padding: 0 6.4vw 0;\n  }\n\n  .banner__title {\n    font-size: 10.8vw;\n  }\n\n  .banner__close-btn {\n    top: 13px;\n  }\n\n  .banner__benefits {\n    margin-top: 10.43vw;\n    gap: 3.589vw;\n  }\n\n  .banner__offers {\n    margin-top: 12.74vw;\n    margin-bottom: 11.28vw;\n    gap: 2.05vw;\n  }\n\n  .banner__offers .link-btn {\n    margin-top: 2.05vw;\n  }\n\n  .banner__footer {\n    padding: 0 0 2.81vw;\n    gap: 8vw;\n  }\n\n  .banner__footer-link {\n    font-size: 3.34vw;\n  }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10343,10 +10369,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.offer {
   background-color: rgba(255, 255, 2555, .3);
 }
 
-.offer__name {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;  
+.offer__name {  
   overflow: hidden;
   color: #FFFFFF;
   letter-spacing: -0.5px;
@@ -10383,12 +10406,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.offer {
   letter-spacing: -0.5px;
 }
 
-
-
 /* iphone 8+/se */
 @media only screen and (min-width: 320px) and (min-height: 667px) {
   .offer {
-    padding: 2.133vw 16.8vw 2.133vw 6.4vw;;
+    padding: 2.133vw 16.8vw 2.133vw 6.4vw;
+    min-height: 14.93vw;
     font-size: 4.267vw;
   }
 
@@ -10406,13 +10428,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.offer {
 @media only screen and (min-width: 375px) and (min-height: 812px) {
   .offer {
     padding: 2.133vw 16.8vw 2.133vw 6.4vw;
+    min-height: 14.36vw;
     font-size: 4.1vw;
   }
 
   .offer .badge {
     right: 6.15vw;
   }
-}`, "",{"version":3,"sources":["webpack://./src/assets/styles/offer.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,aAAa;EACb,SAAS;EACT,WAAW;EACX,8BAA8B;EAC9B,mBAAmB;EACnB,gBAAgB;EAChB,0CAA0C;EAC1C,mBAAmB;EACnB,6BAA6B;AAC/B;;AAEA;EACE,yBAAyB;EACzB,0CAA0C;AAC5C;;AAEA;EACE,oBAAoB;EACpB,qBAAqB;EACrB,4BAA4B;EAC5B,gBAAgB;EAChB,cAAc;EACd,sBAAsB;EACtB,yBAAyB;EACzB,gBAAgB;EAChB,oBAAoB;AACtB;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,+BAA+B;EAC/B,mBAAmB;EACnB,oBAAoB;AACtB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,oBAAoB;EACpB,+BAA+B;EAC/B,gBAAgB;AAClB;;AAEA;EACE,kBAAkB;EAClB,MAAM;EACN,2BAA2B;EAC3B,yBAAyB;EACzB,gBAAgB;EAChB,oBAAoB;EACpB,sBAAsB;AACxB;;;;AAIA,iBAAiB;AACjB;EACE;IACE,qCAAqC;IACrC,kBAAkB;EACpB;;EAEA;IACE,kBAAkB;IAClB,cAAc;EAChB;;EAEA;IACE,YAAY;EACd;AACF;;AAEA,iBAAiB;AACjB;EACE;IACE,qCAAqC;IACrC,gBAAgB;EAClB;;EAEA;IACE,aAAa;EACf;AACF","sourcesContent":[".offer {\n  position: relative;\n  display: flex;\n  gap: 10px;\n  width: 100%;\n  justify-content: space-between;\n  align-items: center;\n  text-align: left;\n  background-color: rgba(255, 255, 2555, .1);\n  border-radius: 32px;\n  border: 1px solid transparent;\n}\n\n.offer_active {\n  border: 1px solid #FFFFFF;\n  background-color: rgba(255, 255, 2555, .3);\n}\n\n.offer__name {\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;  \n  overflow: hidden;\n  color: #FFFFFF;\n  letter-spacing: -0.5px;\n  text-transform: uppercase;\n  font-weight: 600;\n  line-height: 19.09px;\n}\n\n.offer__name p {\n  margin-bottom: 2px;\n}\n\n.offer__name span {\n  color: rgba(255, 255, 2555, .7);\n  font-weight: normal;\n  text-transform: none;\n}\n\n.offer__price {\n  display: flex;\n  flex-direction: column;\n  letter-spacing: -1px;\n  color: rgba(255, 255, 2555, .7);\n  font-weight: 400;\n}\n\n.offer .badge {\n  position: absolute;\n  top: 0;\n  transform: translateY(-50%);\n  text-transform: uppercase;\n  font-weight: 700;\n  line-height: 15.23px;\n  letter-spacing: -0.5px;\n}\n\n\n\n/* iphone 8+/se */\n@media only screen and (min-width: 320px) and (min-height: 667px) {\n  .offer {\n    padding: 2.133vw 16.8vw 2.133vw 6.4vw;;\n    font-size: 4.267vw;\n  }\n\n  .offer__price {\n    min-width: 16.26vw;\n    flex-shrink: 0;\n  }\n\n  .offer .badge {\n    right: 6.4vw;\n  }\n}\n\n/* new iphones  */\n@media only screen and (min-width: 375px) and (min-height: 812px) {\n  .offer {\n    padding: 2.133vw 16.8vw 2.133vw 6.4vw;\n    font-size: 4.1vw;\n  }\n\n  .offer .badge {\n    right: 6.15vw;\n  }\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/assets/styles/offer.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,aAAa;EACb,SAAS;EACT,WAAW;EACX,8BAA8B;EAC9B,mBAAmB;EACnB,gBAAgB;EAChB,0CAA0C;EAC1C,mBAAmB;EACnB,6BAA6B;AAC/B;;AAEA;EACE,yBAAyB;EACzB,0CAA0C;AAC5C;;AAEA;EACE,gBAAgB;EAChB,cAAc;EACd,sBAAsB;EACtB,yBAAyB;EACzB,gBAAgB;EAChB,oBAAoB;AACtB;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,+BAA+B;EAC/B,mBAAmB;EACnB,oBAAoB;AACtB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,oBAAoB;EACpB,+BAA+B;EAC/B,gBAAgB;AAClB;;AAEA;EACE,kBAAkB;EAClB,MAAM;EACN,2BAA2B;EAC3B,yBAAyB;EACzB,gBAAgB;EAChB,oBAAoB;EACpB,sBAAsB;AACxB;;AAEA,iBAAiB;AACjB;EACE;IACE,qCAAqC;IACrC,mBAAmB;IACnB,kBAAkB;EACpB;;EAEA;IACE,kBAAkB;IAClB,cAAc;EAChB;;EAEA;IACE,YAAY;EACd;AACF;;AAEA,iBAAiB;AACjB;EACE;IACE,qCAAqC;IACrC,mBAAmB;IACnB,gBAAgB;EAClB;;EAEA;IACE,aAAa;EACf;AACF","sourcesContent":[".offer {\n  position: relative;\n  display: flex;\n  gap: 10px;\n  width: 100%;\n  justify-content: space-between;\n  align-items: center;\n  text-align: left;\n  background-color: rgba(255, 255, 2555, .1);\n  border-radius: 32px;\n  border: 1px solid transparent;\n}\n\n.offer_active {\n  border: 1px solid #FFFFFF;\n  background-color: rgba(255, 255, 2555, .3);\n}\n\n.offer__name {  \n  overflow: hidden;\n  color: #FFFFFF;\n  letter-spacing: -0.5px;\n  text-transform: uppercase;\n  font-weight: 600;\n  line-height: 19.09px;\n}\n\n.offer__name p {\n  margin-bottom: 2px;\n}\n\n.offer__name span {\n  color: rgba(255, 255, 2555, .7);\n  font-weight: normal;\n  text-transform: none;\n}\n\n.offer__price {\n  display: flex;\n  flex-direction: column;\n  letter-spacing: -1px;\n  color: rgba(255, 255, 2555, .7);\n  font-weight: 400;\n}\n\n.offer .badge {\n  position: absolute;\n  top: 0;\n  transform: translateY(-50%);\n  text-transform: uppercase;\n  font-weight: 700;\n  line-height: 15.23px;\n  letter-spacing: -0.5px;\n}\n\n/* iphone 8+/se */\n@media only screen and (min-width: 320px) and (min-height: 667px) {\n  .offer {\n    padding: 2.133vw 16.8vw 2.133vw 6.4vw;\n    min-height: 14.93vw;\n    font-size: 4.267vw;\n  }\n\n  .offer__price {\n    min-width: 16.26vw;\n    flex-shrink: 0;\n  }\n\n  .offer .badge {\n    right: 6.4vw;\n  }\n}\n\n/* new iphones  */\n@media only screen and (min-width: 375px) and (min-height: 812px) {\n  .offer {\n    padding: 2.133vw 16.8vw 2.133vw 6.4vw;\n    min-height: 14.36vw;\n    font-size: 4.1vw;\n  }\n\n  .offer .badge {\n    right: 6.15vw;\n  }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10720,7 +10743,7 @@ var ___HTML_LOADER_REPLACEMENT_15___ = _node_modules_html_loader_dist_runtime_ge
 var ___HTML_LOADER_REPLACEMENT_16___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_16___);
 var ___HTML_LOADER_REPLACEMENT_17___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_17___);
 var ___HTML_LOADER_REPLACEMENT_18___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_18___);
-var code = "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta\n    name=\"viewport\"\n    content=\"width=device-width, initial-scale=1.0\"\n  >\n  <meta\n    name=\"theme-color\"\n    content=\"#000000\"\n  />\n  <title>Document</title>\n</head>\n\n<body>\n  <div class=\"banner\">\n    <a\n      href=\"#\"\n      aria-label=\"Close\"\n      class=\"banner__close-btn\"\n    >\n      <svg\n        class=\"social-icon\"\n        viewBox=\"0 0 24 24\"\n        width=\"24\"\n        height=\"24\"\n      >\n        <use href=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\"></use>\n      </svg>\n    </a>\n    <h1\n      id=\"banner__title\"\n      class=\"banner__title\"\n      data-i18n=\"Get Unlimited <br>Access\"\n    >\n      Get Unlimited Access\n    </h1>\n\n    <section class=\"banner__benefits\">\n      <div class=\"benefit\">\n        <div class=\"benefit__content\">\n          <picture>\n            <source\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_1___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_2___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_3___ + " 3x\"\n              type=\"image/webp\"\n            >\n            <source\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_4___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_5___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_6___ + " 3x\"\n              type=\"image/png\"\n            >\n            <img\n              src=\"" + ___HTML_LOADER_REPLACEMENT_4___ + "\"\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_4___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_5___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_6___ + " 3x\"\n              class=\"benefit__img\"\n              alt=\"Unlimit arts\"\n            />\n          </picture>\n          <div\n            class=\"benefit__title\"\n            data-i18n=\"Unlimited Art <br>Creation\"\n          >Unlimited Art Creation</div>\n        </div>\n      </div>\n      <div class=\"benefit\">\n        <div class=\"benefit__content\">\n          <picture>\n            <source\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_7___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_8___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_9___ + " 3x\"\n              type=\"image/webp\"\n            />\n            <source\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_10___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_11___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_12___ + " 3x\"\n              type=\"image/png\"\n            />\n            <img\n              src=\"" + ___HTML_LOADER_REPLACEMENT_10___ + "\"\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_10___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_11___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_12___ + " 3x\"\n              class=\"benefit__img\"\n              alt=\"Exclusive style\"\n            />\n          </picture>\n          <div\n            class=\"benefit__title\"\n            data-i18n=\"Exclusive <br>Styles\"\n          >\n            Exclusive Styles\n          </div>\n        </div>\n      </div>\n      <div class=\"benefit\">\n        <div class=\"benefit__content\">\n          <picture>\n            <source\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_14___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_15___ + " 3x\"\n              type=\"image/webp\"\n            />\n            <source\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_16___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_17___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_18___ + " 3x\"\n              type=\"image/png\"\n            />\n            <img\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_16___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_17___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_18___ + " 3x\"\n              class=\"benefit__img\"\n              alt=\"Magic avatars\"\n            />\n          </picture>\n          <div\n            class=\"benefit__title\"\n            data-i18n=\"Magic Avatars <br>With 20% Off\"\n          >Magic Avatars With 20% Off</div>\n        </div>\n      </div>\n    </section>\n\n    <div class=\"banner__offers\">\n\n      <button id=\"offer-yearly\" data-href=\"https://apple.com/\" class=\"offer offer_active\">\n        <div\n          class=\"badge\"\n          data-i18n=\"BEST OFFER\"\n        >\n          best offer\n        </div>\n        <div class=\"offer__name\">\n          <p data-i18n=\"YEARLY ACCESS\">\n            YEARLY ACCESS\n          </p>\n          <span\n            data-i18n=\"Just {{price}} per year\"\n            data-i18n-var-price=\"$39.99\"\n          >\n            Just {{price}} per year\n          </span>\n        </div>\n        <div\n          class=\"offer__price\"\n          data-i18n=\"{{price}} <br>per week\"\n          data-i18n-var-price=\"$0.48\"\n        >\n          $0.48 <br>per week\n        </div>\n      </button>\n\n      <button id=\"offer-monthly\" data-href=\"https://google.com/\" class=\"offer\">\n        <div\n          class=\"offer__name\"\n          data-i18n=\"WEEKLY ACCESS\"\n        >\n          WEEKLY ACCESS\n        </div>\n        <div\n          class=\"offer__price\"\n          data-i18n=\"{{price}} <br>per week\"\n          data-i18n-var-price=\"$6.99\"\n        >\n          $6.99 <br>per week\n        </div>\n      </button>\n      <a\n        id=\"offer-submit\"\n        href=\"#\"\n        class=\"link-btn\"\n        data-i18n=\"Continue\"\n      >\n        Continue\n      </a>\n    </div>\n    <footer class=\"banner__footer\">\n      <a\n        href=\"#\"\n        class=\"banner__footer-link\"\n        data-i18n=\"Terms of Use\"\n      >\n        Terms of Use\n      </a>\n      <a\n        href=\"#\"\n        class=\"banner__footer-link\"\n        data-i18n=\"Privacy Policy\"\n      >\n        Privacy Policy\n      </a>\n      <a\n        href=\"#\"\n        class=\"banner__footer-link\"\n        data-i18n=\"Restore\"\n      >\n        Restore\n      </a>\n    </footer>\n  </div>\n</body>\n\n</html>";
+var code = "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta\n    name=\"viewport\"\n    content=\"width=device-width, initial-scale=1.0\"\n  >\n  <meta\n    name=\"theme-color\"\n    content=\"#000000\"\n  />\n  <title>Document</title>\n</head>\n\n<body>\n  <div class=\"banner\">\n    <a\n      href=\"#\"\n      aria-label=\"Close\"\n      class=\"banner__close-btn\"\n    >\n      <svg\n        class=\"social-icon\"\n        viewBox=\"0 0 24 24\"\n        width=\"24\"\n        height=\"24\"\n      >\n        <use href=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\"></use>\n      </svg>\n    </a>\n    <h1\n      id=\"banner__title\"\n      class=\"banner__title\"\n      data-i18n=\"Get Unlimited <br>Access\"\n    >\n      Get Unlimited Access\n    </h1>\n\n    <section class=\"banner__benefits\">\n      <div class=\"benefit\">\n        <div class=\"benefit__content\">\n          <picture>\n            <source\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_1___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_2___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_3___ + " 3x\"\n              type=\"image/webp\"\n            >\n            <source\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_4___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_5___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_6___ + " 3x\"\n              type=\"image/png\"\n            >\n            <img\n              src=\"" + ___HTML_LOADER_REPLACEMENT_4___ + "\"\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_4___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_5___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_6___ + " 3x\"\n              class=\"benefit__img\"\n              alt=\"Unlimit arts\"\n            />\n          </picture>\n          <div\n            class=\"benefit__title\"\n            data-i18n=\"Unlimited Art <br>Creation\"\n          >Unlimited Art Creation</div>\n        </div>\n      </div>\n      <div class=\"benefit\">\n        <div class=\"benefit__content\">\n          <picture>\n            <source\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_7___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_8___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_9___ + " 3x\"\n              type=\"image/webp\"\n            />\n            <source\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_10___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_11___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_12___ + " 3x\"\n              type=\"image/png\"\n            />\n            <img\n              src=\"" + ___HTML_LOADER_REPLACEMENT_10___ + "\"\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_10___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_11___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_12___ + " 3x\"\n              class=\"benefit__img\"\n              alt=\"Exclusive style\"\n            />\n          </picture>\n          <div\n            class=\"benefit__title\"\n            data-i18n=\"Exclusive <br>Styles\"\n          >\n            Exclusive Styles\n          </div>\n        </div>\n      </div>\n      <div class=\"benefit\">\n        <div class=\"benefit__content\">\n          <picture>\n            <source\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_13___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_14___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_15___ + " 3x\"\n              type=\"image/webp\"\n            />\n            <source\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_16___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_17___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_18___ + " 3x\"\n              type=\"image/png\"\n            />\n            <img\n              srcset=\"" + ___HTML_LOADER_REPLACEMENT_16___ + " 1x, " + ___HTML_LOADER_REPLACEMENT_17___ + " 2x, " + ___HTML_LOADER_REPLACEMENT_18___ + " 3x\"\n              class=\"benefit__img\"\n              alt=\"Magic avatars\"\n            />\n          </picture>\n          <div\n            class=\"benefit__title\"\n            data-i18n=\"Magic Avatars <br>With 20% Off\"\n          >Magic Avatars With 20% Off</div>\n        </div>\n      </div>\n    </section>\n\n    <div class=\"banner__offers\">\n\n      <button\n        id=\"offer-yearly\"\n        data-href=\"https://apple.com/\"\n        class=\"offer offer_active\"\n      >\n        <div\n          class=\"badge\"\n          data-i18n=\"BEST OFFER\"\n        >\n          best offer\n        </div>\n        <div class=\"offer__name\">\n          <p data-i18n=\"YEARLY ACCESS\">\n            YEARLY ACCESS\n          </p>\n          <span\n            data-i18n=\"Just {{price}} per year\"\n            data-i18n-var-price=\"$39.99\"\n          >\n            Just {{price}} per year\n          </span>\n        </div>\n        <div\n          class=\"offer__price\"\n          data-i18n=\"{{price}} <br>per week\"\n          data-i18n-var-price=\"$0.48\"\n        >\n          $0.48 <br>per week\n        </div>\n      </button>\n\n      <button\n        id=\"offer-monthly\"\n        data-href=\"https://google.com/\"\n        class=\"offer\"\n      >\n        <div\n          class=\"offer__name\"\n          data-i18n=\"WEEKLY ACCESS\"\n        >\n          WEEKLY ACCESS\n        </div>\n        <div\n          class=\"offer__price\"\n          data-i18n=\"{{price}} <br>per week\"\n          data-i18n-var-price=\"$6.99\"\n        >\n          $6.99 <br>per week\n        </div>\n      </button>\n      <a\n        id=\"offer-submit\"\n        href=\"#\"\n        class=\"link-btn\"\n        data-i18n=\"Continue\"\n      >\n        Continue\n      </a>\n    </div>\n    <footer class=\"banner__footer\">\n      <!-- <div> -->\n        <a\n          href=\"#\"\n          class=\"banner__footer-link\"\n          data-i18n=\"Terms of Use\"\n        >\n          Terms of Use\n        </a>\n     \n        <a\n          href=\"#\"\n          class=\"banner__footer-link\"\n          data-i18n=\"Privacy Policy\"\n        >\n          Privacy Policy\n        </a>\n\n     \n        <a\n          href=\"#\"\n          class=\"banner__footer-link\"\n          data-i18n=\"Restore\"\n        >\n          Restore\n        </a>\n    </footer>\n  </div>\n</body>\n\n</html>";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -11490,6 +11513,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _locales_ja_json__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./locales/ja.json */ "./src/locales/ja.json");
 /* harmony import */ var _locales_pt_json__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./locales/pt.json */ "./src/locales/pt.json");
 /* harmony import */ var _assets_scripts_translations__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./assets/scripts/translations */ "./src/assets/scripts/translations.js");
+/* harmony import */ var _assets_scripts_changeSizeText__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./assets/scripts/changeSizeText */ "./src/assets/scripts/changeSizeText.js");
 
 
 
@@ -11499,9 +11523,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+const offers = document.querySelectorAll('.offer');
+const offerSbmBtn = document.querySelector('#offer-submit');
 const LOCALES_CODE = ['de', 'en', 'es', 'fr', 'ja', 'pt'];
 const urlParams = new URLSearchParams(window.location.search);
-let currentLanguage = LOCALES_CODE.includes(urlParams.get('lang')) ? urlParams.get('lang') : 'en';
+const navigatorLocale = navigator.language.split('-')[0];
+const systemLang = LOCALES_CODE.includes(navigatorLocale) ? navigatorLocale : 'en';
+let currentLanguage = LOCALES_CODE.includes(urlParams.get('lang')) ? urlParams.get('lang') : systemLang;
+(0,_assets_scripts_translations__WEBPACK_IMPORTED_MODULE_8__.loadTranslations)(currentLanguage).then(() => {
+  updateText();
+});
+offers.forEach(offer => {
+  offer.addEventListener('click', () => {
+    offers.forEach(offer => {
+      offer.classList.remove('offer_active');
+    });
+    offer.classList.add('offer_active');
+    let href = offer.getAttribute('data-href');
+    offerSbmBtn.setAttribute('href', href);
+  });
+});
+window.onload = changeSizeFooterLinks;
+window.addEventListener('resize', changeSizeFooterLinks);
+function changeSizeFooterLinks() {
+  const bannerFooterBlockLink = document.querySelector('.banner__footer');
+  const elements = document.querySelectorAll('.banner__footer-link') || [];
+  (0,_assets_scripts_changeSizeText__WEBPACK_IMPORTED_MODULE_9__.changeSizeText)(bannerFooterBlockLink, elements);
+}
 function updateText() {
   document.querySelectorAll('[data-i18n]').forEach(element => {
     const key = element.getAttribute('data-i18n');
@@ -11513,23 +11562,8 @@ function updateText() {
     element.innerHTML = (0,_assets_scripts_translations__WEBPACK_IMPORTED_MODULE_8__.t)(key, props);
   });
 }
-(0,_assets_scripts_translations__WEBPACK_IMPORTED_MODULE_8__.loadTranslations)(currentLanguage).then(() => {
-  updateText();
-});
-const offers = document.querySelectorAll('.offer');
-const offerSbmBtn = document.querySelector('#offer-submit');
-offers.forEach(offer => {
-  offer.addEventListener('click', () => {
-    offers.forEach(offer => {
-      offer.classList.remove('offer_active');
-    });
-    offer.classList.add('offer_active');
-    let href = offer.getAttribute('data-href');
-    offerSbmBtn.setAttribute('href', href);
-  });
-});
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.43af500bfdf84ec643e4.js.map
+//# sourceMappingURL=main.5bdb542aff8e97d5dde9.js.map
